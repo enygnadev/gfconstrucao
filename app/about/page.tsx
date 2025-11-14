@@ -19,7 +19,7 @@ export default function AboutPage() {
         <PageHeader
           title="Nossa História e Visão"
           highlightedText="Visão"
-          description="Conheça a jornada da ZION CONSTRUTORA para se tornar a principal provedora de soluções em alumínio e vidro de Santa Catarina"
+          description="Conheça a jornada da GF CONSTRUTORA para se tornar a principal provedora de soluções em alumínio e vidro de Santa Catarina"
           backgroundImage="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_5553.jpg-j12YKDWtlJPmxyPR4GnSqfqxlKo5NC.jpeg"
           badge="Sobre Nós"
         />
@@ -36,7 +36,7 @@ export default function AboutPage() {
 
                   <div className="space-y-4 text-slate-700 dark:text-slate-300">
                     <p className="text-lg">
-                      Sediada em Florianópolis, Santa Catarina, a ZION CONSTRUTORA se estabeleceu como a principal
+                      Sediada em Florianópolis, Santa Catarina, a GF CONSTRUTORA se estabeleceu como a principal
                       provedora de soluções em alumínio e vidro da região Sul. Nossa jornada começou com uma visão simples: trazer
                       artesanato de classe mundial e designs inovadores para Santa Catarina.
                     </p>
@@ -77,7 +77,7 @@ export default function AboutPage() {
                   <div className="absolute top-0 right-0 w-[80%] h-[350px] rounded-2xl overflow-hidden shadow-2xl">
                     <Image
                       src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_5553.jpg-j12YKDWtlJPmxyPR4GnSqfqxlKo5NC.jpeg"
-                      alt="Profissional da ZION CONSTRUTORA no trabalho"
+                      alt="Profissional da GF CONSTRUTORA no trabalho"
                       fill
                       className="object-cover"
                     />
@@ -252,7 +252,7 @@ export default function AboutPage() {
               <Badge className="mb-6 bg-orange-500/20 text-orange-500 border-orange-500/30 px-4 py-1.5">Nossa Abordagem</Badge>
 
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-slate-900 dark:text-white">
-                O Processo da <span className="text-orange-500">ZION CONSTRUTORA</span>
+                O Processo da <span className="text-orange-500">GF CONSTRUTORA</span>
               </h2>
 
               <p className="text-lg text-slate-600 dark:text-slate-400">
@@ -277,7 +277,7 @@ export default function AboutPage() {
 
                 <div className="space-y-4 text-slate-700 dark:text-slate-300">
                   <p className="text-lg">
-                    Na ZION CONSTRUTORA, nossa missão é elevar espaços através de soluções excepcionais em vidro e alumínio
+                    Na GF CONSTRUTORA, nossa missão é elevar espaços através de soluções excepcionais em vidro e alumínio
                     que misturam funcionalidade com expressão artística.
                   </p>
 
@@ -303,7 +303,7 @@ export default function AboutPage() {
               <div className="relative h-[500px] w-full">
                 <Image
                   src="/placeholder.svg?height=1000&width=1000"
-                  alt="Instalação ZION CONSTRUTORA"
+                  alt="Instalação GF CONSTRUTORA"
                   fill
                   className="object-cover rounded-2xl"
                 />

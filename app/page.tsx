@@ -421,7 +421,7 @@ export default function ClassicHomePage() {
   const testimonials = [
     {
       quote:
-        "A Zion Construtora transformou nossa residência com esquadrias de alumínio de qualidade excepcional. A atenção aos detalhes e qualidade do trabalho é simplesmente incomparável em Santa Catarina.",
+        "A GF Construtora transformou nossa residência com esquadrias de alumínio de qualidade excepcional. A atenção aos detalhes e qualidade do trabalho é simplesmente incomparável em Santa Catarina.",
       author: "Maria Silva",
       position: "Cliente Residencial",
       company: "Tubarão - SC",
@@ -601,7 +601,7 @@ export default function ClassicHomePage() {
               >
                 <span className="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 bg-white/10 backdrop-blur-xl rounded-full border border-white/20 text-white/90 text-xs md:text-sm font-medium">
                   <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-amber-400 rounded-full animate-pulse" />
-                  Criado por Enygna & Zion Construtora
+                  Criado por Enygna & GF Construtora
                 </span>
               </motion.div>
 
@@ -816,7 +816,7 @@ export default function ClassicHomePage() {
               </h2>
               <div className="w-16 md:w-24 h-0.5 md:h-1 bg-orange-400 mx-auto mb-4 md:mb-8" />
               <p className="text-base md:text-xl lg:text-2xl text-gray-600 leading-relaxed font-light px-4">
-                Por mais de oito anos, a Zion Construtora tem sido referência em construção civil em Tubarão, Santa
+                Por mais de oito anos, a GF Construtora tem sido referência em construção civil em Tubarão, Santa
                 Catarina, oferecendo soluções completas para clientes que buscam qualidade e confiabilidade.
               </p>
             </motion.div>
@@ -1035,7 +1035,7 @@ export default function ClassicHomePage() {
             </h2>
             <div className="w-16 md:w-24 h-0.5 md:h-1 bg-orange-400 mx-auto mb-4 md:mb-8" />
             <p className="text-base md:text-xl text-gray-600 max-w-3xl mx-auto font-light px-4">
-              Ouça de nossos clientes satisfeitos sobre sua experiência com a Zion Construtora.
+              Ouça de nossos clientes satisfeitos sobre sua experiência com a GF Construtora.
             </p>
           </motion.div>
 
@@ -1119,7 +1119,7 @@ export default function ClassicHomePage() {
             className="text-center mb-10 md:mb-20"
           >
             <h2 className="text-2xl md:text-4xl lg:text-5xl font-display font-light text-gray-900 mb-3 md:mb-6 px-4">
-              Por Que Escolher a Zion Construtora
+              Por Que Escolher a GF Construtora
             </h2>
             <div className="w-16 md:w-24 h-0.5 md:h-1 bg-orange-400 mx-auto mb-4 md:mb-8" />
             <p className="text-base md:text-xl text-gray-600 max-w-3xl mx-auto font-light px-4">

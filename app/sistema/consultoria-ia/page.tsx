@@ -109,7 +109,7 @@ export default function ConsultoriaIAPage() {
       type: 'ai',
       content: `Olá ${user?.displayName}! 👋 
 
-Sou a **IA Consultora Neural** da Plataforma Zion, especializada em engenharia e arquitetura catarinense. 
+Sou a **IA Consultora Neural** da Plataforma Enygna, especializada em engenharia e arquitetura catarinense. 
 
 🧠 **Minhas capacidades:**
 • Cálculos estruturais avançados

@@ -49,7 +49,7 @@ export function SiteHeader() {
       <div className="container mx-auto px-4 md:px-6 py-4 flex items-center justify-between">
         <Link href="/" className="flex items-center space-x-2">
           <Logo />
-          <span className="text-xl font-semibold tracking-wider">ZION CONSTRUTORA</span>
+          <span className="text-xl font-semibold tracking-wider">GF CONSTRUTORA</span>
         </Link>
 
         <nav className="hidden lg:flex items-center space-x-8">

@@ -33,8 +33,8 @@ const montserrat = Montserrat({
 
 export const metadata = {
   title: {
-    default: "ZION Construtora | Soluções em Vidro e Alumínio",
-    template: "%s | ZION Construtora",
+    default: "GF Construtora | Soluções em Vidro e Alumínio",
+    template: "%s | GF Construtora",
   },
   description:
     "Serviços profissionais de instalação de vidro e alumínio. Especializados em janelas, portas, box de banheiro e soluções comerciais em vidro com qualidade premium e expertise técnica.",
@@ -50,20 +50,20 @@ export const metadata = {
     "esquadrias de alumínio",
     "construtora",
   ],
-  authors: [{ name: "ZION Construtora" }],
-  creator: "ZION Construtora",
+  authors: [{ name: "GF Construtora" }],
+  creator: "GF Construtora",
   openGraph: {
     type: "website",
     locale: "pt_BR",
-    url: "https://zionconstrutora.com",
-    title: "ZION Construtora | Soluções em Vidro e Alumínio",
+    url: "https://gfconstrutora.com.br",
+    title: "GF Construtora | Soluções em Vidro e Alumínio",
     description:
       "Serviços profissionais de instalação de vidro e alumínio com qualidade premium e expertise técnica.",
-    siteName: "ZION Construtora",
+    siteName: "GF Construtora",
   },
   twitter: {
     card: "summary_large_image",
-    title: "ZION Construtora | Soluções em Vidro e Alumínio",
+    title: "GF Construtora | Soluções em Vidro e Alumínio",
     description:
       "Serviços profissionais de instalação de vidro e alumínio com qualidade premium e expertise técnica.",
   },

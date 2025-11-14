@@ -27,7 +27,7 @@ export function MobileNav({ navItems, currentPath, onClose }: MobileNavProps) {
       <div className="flex items-center justify-between mb-8">
         <div className="flex items-center space-x-2">
           <Logo />
-          <span className="text-xl font-semibold tracking-wider">ZION CONSTRUTORA</span>
+          <span className="text-xl font-semibold tracking-wider">GF CONSTRUTORA</span>
         </div>
         <Button variant="ghost" size="icon" onClick={onClose}>
           <X className="h-6 w-6" />

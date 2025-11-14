@@ -35,7 +35,7 @@ export default function SistemaPage() {
             <div className="flex items-center mb-8">
               <Logo />
               <span className="ml-3 text-2xl font-bold text-white tracking-wide">
-                ZION CONSTRUTORA
+                GF CONSTRUTORA
               </span>
             </div>
 
@@ -100,7 +100,7 @@ export default function SistemaPage() {
                 <div className="flex items-center justify-center mb-4">
                   <Logo />
                   <span className="ml-3 text-xl font-bold text-white tracking-wide">
-                    ZION CONSTRUTORA
+                    GF CONSTRUTORA
                   </span>
                 </div>
                 <p className="text-slate-300 text-sm">
@@ -150,7 +150,7 @@ export default function SistemaPage() {
             {/* Footer */}
             <div className="mt-8 text-center">
               <p className="text-slate-400 text-sm">
-                © 2024 Zion Construtora. Todos os direitos reservados.
+                © 2024 GF Construtora. Todos os direitos reservados.
               </p>
             </div>
           </motion.div>

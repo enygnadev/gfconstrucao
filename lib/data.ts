@@ -69,7 +69,7 @@ export const portfolioHighlights = [
 export const testimonials = [
   {
     quote:
-      "A Zion Construtora transformou nossa visão em realidade. A qualidade da construção e atenção aos detalhes superaram nossas expectativas.",
+      "A GF Construtora transformou nossa visão em realidade. A qualidade da construção e atenção aos detalhes superaram nossas expectativas.",
     author: "Maria Santos",
     position: "Proprietária",
     company: "Residência Mikocheni",

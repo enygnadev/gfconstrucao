@@ -51,7 +51,7 @@ export default function ContactPage() {
                     <Mail className="h-6 w-6 text-orange-500" />
                     <div>
                       <h3 className="font-semibold text-lg">Email</h3>
-                      <p className="text-slate-300">contato@zionconstrutora.com.br</p>
+                      <p className="text-slate-300">contato@gfconstrutora.com.br</p>
                     </div>
                   </div>
 
@@ -187,7 +187,7 @@ export default function ContactPage() {
                           Para dúvidas gerais sobre nossos serviços, produtos ou informações da empresa.
                         </p>
                         <div className="mt-4">
-                          <p className="text-sm text-orange-500">contato@zionconstrutora.com.br</p>
+                          <p className="text-sm text-orange-500">contato@gfconstrutora.com.br</p>
                         </div>
                       </CardContent>
                     </Card>
@@ -199,7 +199,7 @@ export default function ContactPage() {
                           Para informações de preços, orçamentos de projetos personalizados ou para fazer um pedido.
                         </p>
                         <div className="mt-4">
-                          <p className="text-sm text-orange-500">vendas@zionconstrutora.com.br</p>
+                          <p className="text-sm text-orange-500">vendas@gfconstrutora.com.br</p>
                         </div>
                       </CardContent>
                     </Card>
@@ -211,7 +211,7 @@ export default function ContactPage() {
                           Para atendimento pós-venda, consultas sobre garantia ou suporte técnico.
                         </p>
                         <div className="mt-4">
-                          <p className="text-sm text-orange-500">suporte@zionconstrutora.com.br</p>
+                          <p className="text-sm text-orange-500">suporte@gfconstrutora.com.br</p>
                         </div>
                       </CardContent>
                     </Card>

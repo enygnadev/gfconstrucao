@@ -12,7 +12,7 @@ export function SiteFooter() {
           <div className="space-y-4">
             <div className="flex items-center gap-2">
               <Logo className="h-10 w-auto" />
-              <span className="text-xl font-semibold tracking-wider">ZION CONSTRUTORA</span>
+              <span className="text-xl font-semibold tracking-wider">GF CONSTRUTORA</span>
             </div>
             <p className="text-slate-400">Soluções premium em construção civil, esquadrias de alumínio e vidro com qualidade superior em Santa Catarina.</p>
           </div>
@@ -93,7 +93,7 @@ export function SiteFooter() {
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="h-4 w-4 text-orange-500" />
-                <span className="text-slate-400">contato@zionconstrutora.com.br</span>
+                <span className="text-slate-400">contato@gfconstrutora.com.br</span>
               </li>
               <li className="flex items-center gap-2">
                 <MapPin className="h-4 w-4 text-orange-500" />
@@ -109,13 +109,13 @@ export function SiteFooter() {
               Criado com <Heart className="h-4 w-4 text-red-500 fill-current" /> por
               <span className="text-orange-400 font-semibold">Enygna</span>
               <span className="text-slate-500">•</span>
-              <span className="text-blue-400 font-semibold">Zion Construtora</span>
+              <span className="text-blue-400 font-semibold">GF Construtora</span>
             </p>
           </div>
 
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-slate-400 text-sm">
-              © {new Date().getFullYear()} ZION CONSTRUTORA. Todos os direitos reservados.
+              © {new Date().getFullYear()} GF CONSTRUTORA. Todos os direitos reservados.
             </p>
             <div className="flex gap-4 mt-4 md:mt-0">
               <Link href="#" className="text-slate-400 hover:text-orange-500 transition-colors text-sm">
