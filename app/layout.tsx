@@ -1,3 +1,4 @@
+
 import type React from "react"
 import "@/app/globals.css"
 import { Inter, Playfair_Display, Cormorant_Garamond, Montserrat } from "next/font/google"
@@ -33,22 +34,27 @@ const montserrat = Montserrat({
 
 export const metadata = {
   title: {
-    default: "GF Construtora | Soluções em Vidro e Alumínio",
+    default: "GF Construtora | Construção Civil e Reformas",
     template: "%s | GF Construtora",
   },
   description:
-    "Serviços profissionais de instalação de vidro e alumínio. Especializados em janelas, portas, box de banheiro e soluções comerciais em vidro com qualidade premium e expertise técnica.",
+    "Serviços completos de construção civil, reformas e acabamentos. Especializados em obras residenciais, comerciais e industriais com qualidade premium e expertise técnica em Santa Catarina.",
   keywords: [
-    "instalação de vidro",
-    "janelas de alumínio", 
-    "box de banheiro",
-    "vidro comercial",
-    "vidro residencial",
-    "portas de vidro",
-    "fachadas cortina",
-    "serviços de vidraçaria",
-    "esquadrias de alumínio",
     "construtora",
+    "construção civil",
+    "reformas",
+    "obras residenciais",
+    "obras comerciais",
+    "acabamentos",
+    "alvenaria",
+    "fundação",
+    "estrutura metálica",
+    "esquadrias de alumínio",
+    "fachadas",
+    "pintura predial",
+    "revestimentos",
+    "construção Tubarão",
+    "construtora Santa Catarina",
   ],
   authors: [{ name: "GF Construtora" }],
   creator: "GF Construtora",
@@ -56,16 +62,16 @@ export const metadata = {
     type: "website",
     locale: "pt_BR",
     url: "https://gfconstrutora.com.br",
-    title: "GF Construtora | Soluções em Vidro e Alumínio",
+    title: "GF Construtora | Construção Civil e Reformas",
     description:
-      "Serviços profissionais de instalação de vidro e alumínio com qualidade premium e expertise técnica.",
+      "Serviços completos de construção civil, reformas e acabamentos com qualidade premium e expertise técnica em Santa Catarina.",
     siteName: "GF Construtora",
   },
   twitter: {
     card: "summary_large_image",
-    title: "GF Construtora | Soluções em Vidro e Alumínio",
+    title: "GF Construtora | Construção Civil e Reformas",
     description:
-      "Serviços profissionais de instalação de vidro e alumínio com qualidade premium e expertise técnica.",
+      "Serviços completos de construção civil, reformas e acabamentos com qualidade premium e expertise técnica.",
   },
   robots: {
     index: true,

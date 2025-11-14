@@ -14,7 +14,7 @@ export function SiteFooter() {
               <Logo className="h-10 w-auto" />
               <span className="text-xl font-semibold tracking-wider">GF CONSTRUTORA</span>
             </div>
-            <p className="text-slate-400">Soluções premium em construção civil, esquadrias de alumínio e vidro com qualidade superior em Santa Catarina.</p>
+            <p className="text-slate-400">Construção civil completa, reformas e acabamentos com excelência. Mais de 8 anos transformando projetos em realidade em Santa Catarina.</p>
           </div>
 
           <div>
@@ -58,27 +58,27 @@ export function SiteFooter() {
             <ul className="space-y-2">
               <li>
                 <Link href="/services" className="text-slate-400 hover:text-orange-500 transition-colors">
-                  Construção Civil
+                  Construção Residencial
                 </Link>
               </li>
               <li>
                 <Link href="/services" className="text-slate-400 hover:text-orange-500 transition-colors">
-                  Esquadrias de Alumínio
+                  Construção Comercial
                 </Link>
               </li>
               <li>
                 <Link href="/services" className="text-slate-400 hover:text-orange-500 transition-colors">
-                  Fachadas de Vidro
+                  Reformas e Renovações
                 </Link>
               </li>
               <li>
                 <Link href="/services" className="text-slate-400 hover:text-orange-500 transition-colors">
-                  Coberturas de Vidro
+                  Acabamentos Premium
                 </Link>
               </li>
               <li>
                 <Link href="/services" className="text-slate-400 hover:text-orange-500 transition-colors">
-                  Divisórias Corporativas
+                  Estruturas e Fundações
                 </Link>
               </li>
             </ul>
