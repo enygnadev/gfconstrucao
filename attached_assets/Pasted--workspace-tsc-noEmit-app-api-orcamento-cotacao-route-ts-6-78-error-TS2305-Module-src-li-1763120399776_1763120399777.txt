@@ -1,0 +1,36 @@
+~/workspace$ tsc --noEmit
+app/api/orcamento/cotacao/route.ts:6:78 - error TS2305: Module '"@/src/lib/cotacao/types"' has no exported member 'OnlineOffer'.
+
+6 import { CotacaoRequest, CotacaoResponse, BOMItem, FornecedorItem, Proposta, OnlineOffer } from '@/src/lib/cotacao/types'
+                                                                               ~~~~~~~~~~~
+
+app/api/orcamento/cotacao/route.ts:81:9 - error TS2322: Type '({ tipo: "local"; itens: unknown[]; loja: any; custoTotal: { value: number; currency: "BRL"; }; prazoTotal: number; frete: { value: number; currency: "BRL"; }; } | null)[]' is not assignable to type 'Proposta[]'.
+  Type '{ tipo: "local"; itens: unknown[]; loja: any; custoTotal: { value: number; currency: "BRL"; }; prazoTotal: number; frete: { value: number; currency: "BRL"; }; } | null' is not assignable to type 'Proposta'.
+    Type 'null' is not assignable to type 'Proposta'.
+
+81         listaLocal: formatLocalProposals(ofertasLocais, lojasLocais),
+           ~~~~~~~~~~
+
+  src/lib/cotacao/types.ts:72:3
+    72   listaLocal: Proposta[]
+         ~~~~~~~~~~
+    The expected type comes from property 'listaLocal' which is declared here on type 'CotacaoResponse'
+
+app/api/orcamento/cotacao/route.ts:82:44 - error TS2345: Argument of type 'Record<string, FornecedorItem[]>' is not assignable to parameter of type 'OnlineOffer[]'.
+  Type 'Record<string, FornecedorItem[]>' is missing the following properties from type 'OnlineOffer[]': length, pop, push, concat, and 35 more.
+
+82         listaOnline: formatOnlineProposals(ofertasOnline),
+                                              ~~~~~~~~~~~~~
+
+src/lib/cotacao/bom.ts:20:9 - error TS2322: Type '{ sku: string; nome: string; unidade: string; quantidade: number; categoria: string; especificacao: string; }[]' is not assignable to type 'BOMItem[]'.
+  Type '{ sku: string; nome: string; unidade: string; quantidade: number; categoria: string; especificacao: string; }' is missing the following properties from type 'BOMItem': codigo, descricao, prioridade
+
+20   const bom: BOMItem[] = composicoes.map(composicao => {
+           ~~~
+
+
+Found 4 errors in 2 files.
+
+Errors  Files
+     3  app/api/orcamento/cotacao/route.ts:6
+     1  src/lib/cotacao/bom.ts:20

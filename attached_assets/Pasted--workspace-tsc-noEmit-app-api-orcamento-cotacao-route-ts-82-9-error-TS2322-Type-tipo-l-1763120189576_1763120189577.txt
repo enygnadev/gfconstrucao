@@ -1,0 +1,91 @@
+~/workspace$ tsc --noEmit
+app/api/orcamento/cotacao/route.ts:82:9 - error TS2322: Type '({ tipo: "local"; itens: unknown[]; loja: any; custoTotal: { value: number; currency: "BRL"; }; prazoTotal: number; frete: { value: number; currency: "BRL"; }; } | null)[]' is not assignable to type 'Proposta[]'.
+  Type '{ tipo: "local"; itens: unknown[]; loja: any; custoTotal: { value: number; currency: "BRL"; }; prazoTotal: number; frete: { value: number; currency: "BRL"; }; } | null' is not assignable to type 'Proposta'.
+    Type 'null' is not assignable to type 'Proposta'.
+
+82         listaLocal: formatLocalProposals(ofertasLocais, lojasLocais),
+           ~~~~~~~~~~
+
+  src/lib/cotacao/types.ts:66:3
+    66   listaLocal: Proposta[]
+         ~~~~~~~~~~
+    The expected type comes from property 'listaLocal' which is declared here on type 'CotacaoResponse'
+
+app/api/orcamento/cotacao/route.ts:83:9 - error TS2322: Type '{ tipo: "online"; itens: unknown[]; loja: { id: string; nome: string; }; custoTotal: { value: number; currency: "BRL"; }; prazoTotal: number; frete: { value: number; currency: "BRL"; }; }[]' is not assignable to type 'Proposta[]'.
+  Type '{ tipo: "online"; itens: unknown[]; loja: { id: string; nome: string; }; custoTotal: { value: number; currency: "BRL"; }; prazoTotal: number; frete: { value: number; currency: "BRL"; }; }' is not assignable to type 'Proposta'.
+    Types of property 'itens' are incompatible.
+      Type 'unknown[]' is not assignable to type 'FornecedorItem[]'.
+        Type 'unknown' is not assignable to type 'FornecedorItem'.
+
+83         listaOnline: formatOnlineProposals(ofertasOnline),
+           ~~~~~~~~~~~
+
+  src/lib/cotacao/types.ts:67:3
+    67   listaOnline: Proposta[]
+         ~~~~~~~~~~~
+    The expected type comes from property 'listaOnline' which is declared here on type 'CotacaoResponse'
+
+src/lib/cotacao/bom.ts:21:9 - error TS2322: Type '{ sku: string; nome: string; unidade: string; quantidade: number; categoria: string; especificacao: string; }[]' is not assignable to type 'BOMItem[]'.
+  Type '{ sku: string; nome: string; unidade: string; quantidade: number; categoria: string; especificacao: string; }' is missing the following properties from type 'BOMItem': codigo, descricao, prioridade
+
+21   const bom: BOMItem[] = composicoes.map(composicao => {
+           ~~~
+
+src/lib/cotacao/optimizer.ts:43:3 - error TS2741: Property 'itensNaoEncontrados' is missing in type '{ itens: FornecedorItem[]; custoTotal: { value: number; currency: "BRL"; }; prazoMaximo: number; lojasUsadas: { id: string; nome: string; rating: number; }[]; economia: { value: number; currency: "BRL"; }; freteTotal: { ...; }; }' but required in type 'CestaOtima'.
+
+43   return {
+     ~~~~~~
+
+  src/lib/cotacao/types.ts:172:3
+    172   itensNaoEncontrados: BOMItem[]
+          ~~~~~~~~~~~~~~~~~~~
+    'itensNaoEncontrados' is declared here.
+
+src/lib/cotacao/types.ts:167:3 - error TS2717: Subsequent property declarations must have the same type.  Property 'lojasUsadas' must be of type 'LojaInfo[]', but here has type 'Loja[]'.
+
+167   lojasUsadas: Loja[]
+      ~~~~~~~~~~~
+
+  src/lib/cotacao/types.ts:52:3
+    52   lojasUsadas: LojaInfo[]
+         ~~~~~~~~~~~
+    'lojasUsadas' was also declared here.
+
+src/lib/cotacao/types.ts:168:3 - error TS2717: Subsequent property declarations must have the same type.  Property 'custoTotal' must be of type 'Money', but here has type '{ value: number; currency: string; }'.
+
+168   custoTotal: { value: number; currency: string }
+      ~~~~~~~~~~
+
+  src/lib/cotacao/types.ts:50:3
+    50   custoTotal: Money
+         ~~~~~~~~~~
+    'custoTotal' was also declared here.
+
+src/lib/cotacao/types.ts:169:3 - error TS2717: Subsequent property declarations must have the same type.  Property 'freteTotal' must be of type 'Money', but here has type '{ value: number; currency: string; }'.
+
+169   freteTotal: { value: number; currency: string }
+      ~~~~~~~~~~
+
+  src/lib/cotacao/types.ts:54:3
+    54   freteTotal: Money
+         ~~~~~~~~~~
+    'freteTotal' was also declared here.
+
+src/lib/cotacao/types.ts:171:3 - error TS2717: Subsequent property declarations must have the same type.  Property 'economia' must be of type 'Money', but here has type '{ value: number; currency: string; }'.
+
+171   economia: { value: number; currency: string }
+      ~~~~~~~~
+
+  src/lib/cotacao/types.ts:53:3
+    53   economia: Money // vs média de mercado
+         ~~~~~~~~
+    'economia' was also declared here.
+
+
+Found 8 errors in 4 files.
+
+Errors  Files
+     2  app/api/orcamento/cotacao/route.ts:82
+     1  src/lib/cotacao/bom.ts:21
+     1  src/lib/cotacao/optimizer.ts:43
+     4  src/lib/cotacao/types.ts:167

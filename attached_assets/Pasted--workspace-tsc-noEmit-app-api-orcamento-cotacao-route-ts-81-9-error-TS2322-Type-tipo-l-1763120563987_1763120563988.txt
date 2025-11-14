@@ -1,0 +1,48 @@
+~/workspace$ tsc --noEmit
+app/api/orcamento/cotacao/route.ts:81:9 - error TS2322: Type '({ tipo: "local"; itens: unknown[]; loja: any; custoTotal: { value: number; currency: "BRL"; }; prazoTotal: number; frete: { value: number; currency: "BRL"; }; } | null)[]' is not assignable to type 'Proposta[]'.
+  Type '{ tipo: "local"; itens: unknown[]; loja: any; custoTotal: { value: number; currency: "BRL"; }; prazoTotal: number; frete: { value: number; currency: "BRL"; }; } | null' is not assignable to type 'Proposta'.
+    Type 'null' is not assignable to type 'Proposta'.
+
+81         listaLocal: formatLocalProposals(ofertasLocais, lojasLocais).filter((p): p is Proposta => p !== null),
+           ~~~~~~~~~~
+
+  src/lib/cotacao/types.ts:83:3
+    83   listaLocal: Proposta[]
+         ~~~~~~~~~~
+    The expected type comes from property 'listaLocal' which is declared here on type 'CotacaoResponse'
+
+app/api/orcamento/cotacao/route.ts:81:87 - error TS2677: A type predicate's type must be assignable to its parameter's type.
+  Type 'Proposta' is not assignable to type '{ tipo: "local"; itens: unknown[]; loja: any; custoTotal: { value: number; currency: "BRL"; }; prazoTotal: number; frete: { value: number; currency: "BRL"; }; }'.
+    Types of property 'tipo' are incompatible.
+      Type '"local" | "online"' is not assignable to type '"local"'.
+        Type '"online"' is not assignable to type '"local"'.
+
+81         listaLocal: formatLocalProposals(ofertasLocais, lojasLocais).filter((p): p is Proposta => p !== null),
+                                                                                         ~~~~~~~~
+
+app/api/orcamento/cotacao/route.ts:284:56 - error TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
+
+284       value: (itens || []).reduce((sum, item) => sum + (item.preco || 0) * (item.quantidade || 0), 0),
+                                                           ~~~~~~~~~~~~~~~~~
+
+app/api/orcamento/cotacao/route.ts:284:82 - error TS2339: Property 'quantidade' does not exist on type 'FornecedorItem'.
+
+284       value: (itens || []).reduce((sum, item) => sum + (item.preco || 0) * (item.quantidade || 0), 0),
+                                                                                     ~~~~~~~~~~
+
+src/lib/cotacao/types.ts:150:3 - error TS2717: Subsequent property declarations must have the same type.  Property 'prioridade' must be of type 'number', but here has type '"alta" | "media" | "baixa"'.
+
+150   prioridade: 'alta' | 'media' | 'baixa'
+      ~~~~~~~~~~
+
+  src/lib/cotacao/types.ts:15:3
+    15   prioridade: number
+         ~~~~~~~~~~
+    'prioridade' was also declared here.
+
+
+Found 5 errors in 2 files.
+
+Errors  Files
+     4  app/api/orcamento/cotacao/route.ts:81
+     1  src/lib/cotacao/types.ts:150

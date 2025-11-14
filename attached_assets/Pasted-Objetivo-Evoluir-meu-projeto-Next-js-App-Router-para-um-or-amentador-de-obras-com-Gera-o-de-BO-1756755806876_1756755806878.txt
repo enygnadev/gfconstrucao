@@ -1,0 +1,243 @@
+Objetivo:
+Evoluir meu projeto Next.js (App Router) para um orçamentador de obras com:
+
+Geração de BOM (lista de materiais) a partir de área, tipo, padrão.
+
+Lista Local (por CEP) com lojas próximas e menor custo entregue (preço + frete).
+
+Lista Online (e-commerce) com menor custo total (preço + frete + prazo).
+
+Otimização para sugerir cesta ótima (possível divisão entre fornecedores).
+
+Tudo isso sem alterar o restante do código/UX já existente: apenas acoplar nos pontos indicados.
+
+Regras e Constrangimentos (NÃO NEGOCIAR)
+
+Não alterar a UI atual nem quebrar props; o componente OrcamentoQuanticoPage com "use client" deve permanecer igual, apenas conectar novas chamadas/props/sections.
+
+Sem chaves no client. Toda integração externa só via rotas server em app/api/**.
+
+Código em TypeScript estrito, tipando DTOs de request/response.
+
+Adicionar tratamento de erro, timeouts ~(10s), rate limit leve (ex.: token bucket in-memory) e cache (Edge/Memory) para requisições repetidas.
+
+Usar feature flags por env (ex.: USE_PLACES=true/false) para ligar/desligar provedores sem quebrar.
+
+Commits atômicos e mensagens claras. Nenhum código morto. Linters passam.
+
+1) Variáveis de Ambiente (criar e tipar)
+
+Criar .env.local.example e validar em env.d.ts:
+
+GOOGLE_MAPS_KEY=
+MELI_TOKEN=
+CORREIOS_TOKEN=
+SERP_API_KEY=          # opcional (Google Shopping via SerpAPI)
+OVERPASS_URL=https://overpass-api.de/api/interpreter
+USE_PLACES=true        # se false, usa OSM (Overpass) para lojas locais
+USE_SERP=false         # se true, habilita Google Shopping via SerpAPI
+
+
+Garanta que nunca exportamos essas chaves ao client.
+
+2) Pastas e Arquivos a ADICIONAR (sem mexer no resto)
+/app/api/geo/nearby/route.ts            # Google Places ou fallback OSM
+/app/api/open/local/overpass/route.ts   # Overpass para OSM
+/app/api/preco/frete/route.ts           # Correios Preço & Prazo (ou agregador)
+/app/api/online/meli/route.ts           # Mercado Livre (busca/preços/envio)
+/app/api/orcamento/cotacao/route.ts     # Orquestrador: recebe BOM ➜ cotações ➜ otimização
+
+/src/lib/cotacao/bom.ts                 # gerador de BOM por tipo/padrão/área
+/src/lib/cotacao/providers.ts           # fetchers tipados para cada provedor
+/src/lib/cotacao/optimizer.ts           # min-cost para cesta ótima
+/src/lib/cotacao/normalizers.ts         # normalização de unidades (kg, m³, saco)
+/src/lib/cotacao/types.ts               # DTOs e tipos fortes
+/src/lib/cotacao/cache.ts               # memo/cache simples com TTL
+/src/lib/cotacao/rateLimit.ts           # rate limit leve
+/data/sinapi/sinapi_basico.json         # composições base (mock inicial)
+
+
+IMPORTANTE: Não modifique arquivos existentes de UI. Se necessário, apenas acrescente seções no Tab “resultados”: “Lista Local” e “Lista Online”.
+
+3) Tipos/DTOs (criar /src/lib/cotacao/types.ts)
+
+Tipar BOMItem (sku, nome, unidade, quantidade), FornecedorItem (preço, frete, prazo, url), Proposta (Local/Online), CotacaoRequest (área, tipo, padrão, CEP), CotacaoResponse (duas listas + cesta ótima + métricas).
+
+Reutilizar enums/aliases já existentes (ex.: RegionalData se houver).
+
+Definir Money = { value: number; currency: 'BRL' }, tudo em centavos.
+
+4) Gerador de BOM ( /src/lib/cotacao/bom.ts )
+
+Implementar buildBOM({ area, tipo, padrao }): BOMItem[] usando /data/sinapi/sinapi_basico.json (mock) para composições por m².
+
+Regra simples: multiplicar coeficientes por area; aplicar fator por padrao (popular/medio/alto/luxo).
+
+Prever equivalências de SKU (ex.: cimento 50kg vs 25kg) em normalizers.ts com lógica de conversão.
+
+5) Providers ( /src/lib/cotacao/providers.ts )
+
+Local:
+
+Se USE_PLACES=true, usar rota /api/geo/nearby para listar lojas (hardware/building materials) num raio (10–20 km do CEP).
+
+Se USE_PLACES=false, usar /api/open/local/overpass.
+
+Para preço local, tentar site da loja (quando disponível) ou, se USE_SERP=true, chamar SerpAPI (Shopping Nearby) pela rota server (opcional).
+
+Frete/prazo: /api/preco/frete (Correios ou transportadora simulada), conforme peso/dimensões do item.
+
+Online:
+
+/api/online/meli (Mercado Livre). Considere shipping para o CEP (custo e prazo).
+
+Retornar lista por item com as 3–5 melhores ofertas (preço, frete, prazo, vendedor, rating).
+
+Todos os providers devem:
+
+Aceitar AbortSignal (timeout).
+
+Normalizar resultado em FornecedorItem.
+
+NUNCA vazar chaves ao client.
+
+Usar cache.get/set com TTL (ex.: 15 min).
+
+6) Otimizador ( /src/lib/cotacao/optimizer.ts )
+
+Função: pickCheapestBasket(bom: BOMItem[], ofertas: MapaDeOfertasPorSKU, constraints).
+
+Objetivo: minimizar custo total entregue = ∑(preço item + frete item ou frete por loja) + penalidades (prazo > X dias, loja com baixa reputação).
+
+Heurística prática:
+
+Para cada item, selecione top-3 ofertas por (preço + frete).
+
+Monte cestas por agrupamento de loja e escolha a melhor.
+
+Se empate, preferir melhor prazo e melhor rating.
+
+Retorne: cesta ótima + alternativas (2ª/3ª melhor).
+
+7) Rotas Server (implementar)
+/app/api/geo/nearby/route.ts
+
+POST { lat, lng, radiusMeters, keyword }
+
+Se USE_PLACES=true: Google Places Nearby/SearchText (v1) com X-Goog-FieldMask.
+
+Caso contrário, proxy para /api/open/local/overpass.
+
+Timeout 10s, cache 15min, rate limit.
+
+/app/api/open/local/overpass/route.ts
+
+POST { lat, lng, radius }
+
+Executa query Overpass para shop=building_materials e shop=hardware.
+
+Normaliza para estrutura comum de loja.
+
+/app/api/preco/frete/route.ts
+
+POST { cepOrigem, cepDestino, peso, dimensoes, servico }
+
+Integra com Correios (ou retorne mock configurável se CORREIOS_TOKEN faltar).
+
+Retorna { valorFrete, prazoDias, servico }.
+
+/app/api/online/meli/route.ts
+
+POST { query, zip }
+
+Usa token OAuth MELI_TOKEN.
+
+Retorna itens com price, shipping.cost, shipping.time, permalink, seller.reputation.
+
+/app/api/orcamento/cotacao/route.ts (ORQUESTRADOR)
+
+POST { area, tipo, padrao, cep }
+
+Passos:
+
+buildBOM → BOMItem[].
+
+Geocode/CEP → lat/lng.
+
+Providers: coletar Local e Online por item (com cache).
+
+Calcular frete total (policy: por-loja ou por-item).
+
+optimizer → cesta ótima + alternativas.
+
+Retornar CotacaoResponse com:
+
+bom, listaLocal[], listaOnline[], cestaOtima, metrica: {custoTotal, prazo, lojasUsadas}, debug?.
+
+8) Integração no Client (sem quebrar a UI)
+
+No Tab “resultados”, ADICIONAR (no final) dois blocos abaixo do resultado atual:
+
+Lista Local (por CEP): tabela com SKU, Fornecedor, Preço, Frete, Prazo, Link.
+
+Lista Online: mesma estrutura.
+
+Cesta Ótima: resumo consolidado (total, economia vs média, lojas, prazo).
+
+Não remova nada do que já existe.
+
+Adicionar um botão: “🔎 Cotar Materiais (Local & Online)” que faz POST /api/orcamento/cotacao com { area, tipo, padrao, cep } e, ao concluir, rende os três blocos acima.
+
+Tratar loading/erro com toasts leves. Não bloquear o seu fluxo quântico.
+
+9) Persistência (Firebase)
+
+Quando já salvamos quantum-calculations, agora salvar também:
+
+{
+  ...,
+  cotacoes: {
+    bom,
+    listaLocal,
+    listaOnline,
+    cestaOtima,
+    generatedAt: serverTimestamp()
+  }
+}
+
+
+Não alterar a estrutura anterior; apenas acrescentar este campo.
+
+10) Testes Rápidos (pelo menos)
+
+Unit: bom.ts (regras por área/padrão), normalizers.ts (conversões), optimizer.ts (ex.: 3 itens × 2 lojas).
+
+E2E leve: rota /api/orcamento/cotacao com USE_PLACES=false e mocks, garantindo resposta consistente.
+
+11) Observabilidade
+
+Logger pequeno (console + flag DEBUG_COTACAO=true) no server.
+
+Logar tempo de cada provedor e cache hits.
+
+Não logar tokens nem dados sensíveis.
+
+12) Entregáveis (Commits sugeridos)
+
+chore(env): add env schema and examples for providers
+
+feat(bom): basic SINAPI-like compositions and BOM generator
+
+feat(providers): local (places/osm), online (meli), freight (correios)
+
+feat(optimizer): cheapest basket with constraints
+
+feat(api): orchestrator /api/orcamento/cotacao
+
+feat(ui): add Local/Online/Cesta sections (non-breaking)
+
+test(core): unit tests for bom/optimizer/normalizers
+
+docs(readme): how to set keys and run
+
+Entregar PR final passando build, lint e testes. Não remover nada existente.

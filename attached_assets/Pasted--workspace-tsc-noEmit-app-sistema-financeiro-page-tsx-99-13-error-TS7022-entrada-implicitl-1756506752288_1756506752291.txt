@@ -1,0 +1,86 @@
+~/workspace$ tsc --noEmit
+app/sistema/financeiro/page.tsx:99:13 - error TS7022: 'entrada' implicitly has type 'any' because it does not have a type annotation and is referenced directly or indirectly in its own initializer.
+
+99       const entrada = i === 0 ? entrada : 0
+               ~~~~~~~
+
+app/sistema/financeiro/page.tsx:99:33 - error TS2448: Block-scoped variable 'entrada' used before its declaration.
+
+99       const entrada = i === 0 ? entrada : 0
+                                   ~~~~~~~
+
+  app/sistema/financeiro/page.tsx:99:13
+    99       const entrada = i === 0 ? entrada : 0
+                   ~~~~~~~
+    'entrada' is declared here.
+
+app/sistema/orcamento-quantico/page.tsx:949:24 - error TS2304: Cannot find name 'Calendar'.
+
+949                       <Calendar className="h-4 w-4 mr-2" />
+                           ~~~~~~~~
+
+components/quote-calculator.tsx:8:24 - error TS2307: Cannot find module '@/components/ui/slider' or its corresponding type declarations.
+
+8 import { Slider } from "@/components/ui/slider"
+                         ~~~~~~~~~~~~~~~~~~~~~~~~
+
+components/quote-calculator.tsx:9:24 - error TS2307: Cannot find module '@/components/ui/switch' or its corresponding type declarations.
+
+9 import { Switch } from "@/components/ui/switch"
+                         ~~~~~~~~~~~~~~~~~~~~~~~~
+
+components/quote-calculator.tsx:89:35 - error TS7006: Parameter 'value' implicitly has an 'any' type.
+
+89                   onValueChange={(value) => setDimensions({ ...dimensions, width: value[0] })}
+                                     ~~~~~
+
+components/quote-calculator.tsx:107:35 - error TS7006: Parameter 'value' implicitly has an 'any' type.
+
+107                   onValueChange={(value) => setDimensions({ ...dimensions, height: value[0] })}
+                                      ~~~~~
+
+components/quote-calculator.tsx:126:33 - error TS7006: Parameter 'checked' implicitly has an 'any' type.
+
+126               onCheckedChange={(checked) => setFeatures({ ...features, customShape: checked })}
+                                    ~~~~~~~
+
+components/quote-calculator.tsx:137:33 - error TS7006: Parameter 'checked' implicitly has an 'any' type.
+
+137               onCheckedChange={(checked) => setFeatures({ ...features, ledLighting: checked })}
+                                    ~~~~~~~
+
+components/quote-calculator.tsx:148:33 - error TS7006: Parameter 'checked' implicitly has an 'any' type.
+
+148               onCheckedChange={(checked) => setFeatures({ ...features, premiumHardware: checked })}
+                                    ~~~~~~~
+
+components/testimonials-carousel.tsx:6:40 - error TS2307: Cannot find module '@/components/ui/avatar' or its corresponding type declarations.
+
+6 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
+                                         ~~~~~~~~~~~~~~~~~~~~~~~~
+
+components/ui/calendar.tsx:57:9 - error TS2353: Object literal may only specify known properties, and 'IconLeft' does not exist in type 'Partial<CustomComponents>'.
+
+57         IconLeft: ({ ...props }) => <ChevronLeft className="h-4 w-4" />,
+           ~~~~~~~~
+
+  node_modules/react-day-picker/dist/esm/types/props.d.ts:283:5
+    283     components?: Partial<CustomComponents>;
+            ~~~~~~~~~~
+    The expected type comes from property 'components' which is declared here on type 'IntrinsicAttributes & DayPickerProps'
+
+lib/data.ts:1:37 - error TS2307: Cannot find module 'some-icon-library' or its corresponding type declarations.
+
+1 import { Award, Users, Clock } from "some-icon-library" // Assuming these are icons from a library
+                                      ~~~~~~~~~~~~~~~~~~~
+
+
+Found 13 errors in 6 files.
+
+Errors  Files
+     2  app/sistema/financeiro/page.tsx:99
+     1  app/sistema/orcamento-quantico/page.tsx:949
+     7  components/quote-calculator.tsx:8
+     1  components/testimonials-carousel.tsx:6
+     1  components/ui/calendar.tsx:57
+     1  lib/data.ts:1
