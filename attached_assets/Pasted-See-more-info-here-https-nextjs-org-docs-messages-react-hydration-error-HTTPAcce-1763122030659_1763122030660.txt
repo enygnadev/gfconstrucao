@@ -1,0 +1,61 @@
+See more info here: https://nextjs.org/docs/messages/react-hydration-error
+
+
+  ...
+    <HTTPAccessFallbackBoundary notFound={[...]} forbidden={undefined} unauthorized={undefined}>
+      <HTTPAccessFallbackErrorBoundary pathname="/" notFound={[...]} forbidden={undefined} unauthorized={undefined} ...>
+        <RedirectBoundary>
+          <RedirectErrorBoundary router={{...}}>
+            <InnerLayoutRouter url="/" tree={[...]} cacheNode={{lazyData:null, ...}} segmentPath={[...]}>
+              <ClientPageRoot Component={function ClassicHomePage} searchParams={{}} params={{}}>
+                <ClassicHomePage params={Promise} searchParams={Promise}>
+                  <div className="min-h-scre...">
+                    <SiteHeader>
+                      <header className="sticky top...">
+                        <div className="container ...">
+                          <LinkComponent href="/" className="flex items...">
+                            <a className="flex items..." ref={function} onClick={function onClick} ...>
+                              <Logo>
+                                <div className={undefined}>
+                                  <img
++                                   alt="CHEVAL MIRROR Logo"
+-                                   alt="GF Construtora Logo"
+                                    fetchPriority={undefined}
++                                   loading="lazy"
+-                                   loading={null}
+                                    width={40}
+                                    height={40}
+                                    decoding="async"
+                                    data-nimg="1"
+                                    className="rounded-full"
+                                    style={{color:"transparent"}}
+                                    sizes={undefined}
+                                    srcSet={undefined}
+                                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_5535.jpg-zuS1UT8r..."
+                                    ref={function}
+                                    onLoad={function onLoad}
+                                    onError={function onError}
+                                  >
+                              <span className="text-xl font-semibold tracking-wider">
++                               ZION CONSTRUTORA
+-                               GF CONSTRUTORA
+                          ...
+                    ...
+              ...
+components/site-header.tsx (52:11) @ SiteHeader
+
+
+  50 |         <Link href="/" className="flex items-center space-x-2">
+  51 |           <Logo />
+> 52 |           <span className="text-xl font-semibold tracking-wider">GF CONSTRUTORA</span>
+     |           ^
+  53 |         </Link>
+  54 |
+  55 |         <nav className="hidden lg:flex items-center space-x-8">
+Call Stack
+15
+
+Show 12 ignore-listed frame(s)
+span
+<anonymous> (0:0)
+SiteHeader
